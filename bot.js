@@ -1,5 +1,5 @@
 const dotenv = require('dotenv')
-require('http').createServer().listen(3000);
+//require('http').createServer().listen(3000);
 const Discord = require('discord.io');
 const logger = require('winston');
 const result = dotenv.config()
