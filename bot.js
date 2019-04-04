@@ -4,10 +4,6 @@ const Discord = require('discord.io');
 const logger = require('winston');
 const result = dotenv.config()
 
-module.exports = (req, res) => {
-    res.end('The time is: ' + new Date())
-}
-
 if (result.error) {
     throw result.error
 }
@@ -19,8 +15,8 @@ logger.add(new logger.transports.Console());
 logger.level = 'debug';
 // Initialize Discord Bot
 var bot = new Discord.Client({
-    autorun: true,/* If false, you need to connect to the server using bot.connect(); */
-    token: process.env.TOKEN /* your discordapp token */
+    autorun: true,
+    token: process.env.BOT_TOKEN
 });
 bot.on('ready', function (evt) {
     logger.info('Connected');
@@ -48,4 +44,32 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             // Just add any case commands if you want to..
         }
     }
+});/*
+const Discord = require('discord.io');
+
+const client = new Discord.Client({
+    autorun: true,
+    token: process.env.TOKEN
 });
+
+
+
+client.on('ready', () => {
+
+    console.log('I am ready!');
+
+});
+
+
+
+client.on('message', message => {
+
+    if (message.content === 'ping') {
+
+       message.reply('pong');
+
+       }
+
+});
+
+//client.login(process.env.BOT_TOKEN);*/
