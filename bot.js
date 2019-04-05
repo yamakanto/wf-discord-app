@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 //require('http').createServer().listen(3000);
 const Discord = require('discord.io');
 const logger = require('winston');
-const result = dotenv.config()
+const result = dotenv.config();
 
 if (result.error) {
     throw result.error
@@ -18,15 +18,15 @@ const bot = new Discord.Client({
     autorun: true,
     token: process.env.BOT_TOKEN
 });
-bot.on('ready', function (evt) {
+bot.on('ready', function () {
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
-bot.on('message', function (user, userID, channelID, message, evt) {
+bot.on('message', function (user, userID, channelID, message) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-    if (message.substring(0, 3) == '!wf') {
+    if (message.substring(0, 3) === '!wf') {
         let args = message.substring(1).split(' ');
         //const cmd = args[0];
         const cmd1 = args[1];
@@ -41,6 +41,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         'Fortuna: https://www.framemastery.com/orb-vallis-fishing-guide/#Vallis_Fishing_Table'
                 });
                 break;
+            case "":
+                bot.sendMessage({
+                    to: channelID,
+                    message: ' bla'
+                });
         }
     }
 });
