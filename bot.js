@@ -1,4 +1,4 @@
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 //require('http').createServer().listen(3000);
 const Discord = require('discord.io');
 const logger = require('winston');
@@ -41,7 +41,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         'Fortuna: https://www.framemastery.com/orb-vallis-fishing-guide/#Vallis_Fishing_Table'
                 });
                 break;
-            // Just add any case commands if you want to..
         }
     }
 });
